@@ -1,0 +1,42 @@
+body {
+  background-color: rgb(87, 87, 87);
+}
+
+#analyser_render {
+  background: linear-gradient(rgb(113, 113, 226), rgb(150, 136, 136));
+  border: 2px solid rgb(58, 58, 58);
+  border-radius: 20px;
+  display: block;
+  margin: auto;
+}
+
+#audio_box {
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+}
+
+#inputButtonPlayPause, #inputButtonSkip {
+  font-size: 40px;
+  background: rgb(83, 58, 143);
+  border: 3px solid rgb(43, 92, 99);
+  border-radius: 40px;
+  transition: 0.2s;
+}
+
+#inputButtonPlayPause, #inputButtonSkip {
+  font-size: 45px;
+}
+
+#inputTextVolume {
+  visibility: hidden;
+  margin: 0;
+  padding: 0;
+  border: none;
+  width: 0;
+}
+
+#audio_box p {
+  font-size: 40px;
+  margin: 0;
+}

@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Music Player (:</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='styles/style.css')}}">
+  </head>
+  <body>
+    <canvas id="analyser_render"></canvas>
+    <div id="audio_box">
+      <audio src="static/songs/song{{current_song_id}}.mp3" id="audio" autoplay="true"></audio>
+      <p id="paragraphSongName"></p>
+      <input type="range" id="inputRangeVolume" min=0 max="100" value="5">
+      <button id="inputButtonPlayPause" name="playPause">Play</button>
+      <form id="formSkipVolume" action="/">
+        <input id="inputTextVolume" type="text" name="volume" value="{{volume}}">
+        <input id="inputButtonSkip" type="submit" value="Skip">
+      </form>
+      <p id="paragraphTime">0:00 / 1:00</p>
+      <input type="range" id="inputRangeSongProgress" min="0">
+    </div>
+    <script src="{{url_for('static', filename='scripts/definition.js')}}", song={{song}}, volume={{volume}}></script>
+    <script src="{{url_for('static', filename='scripts/audio controller.js')}}"></script>
+    <script src="{{url_for('static', filename='scripts/player.js')}}"></script>
+  </body>
+</html>
