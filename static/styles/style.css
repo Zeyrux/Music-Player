@@ -1,5 +1,6 @@
 body {
   background-color: rgb(87, 87, 87);
+  position: relative;
 }
 
 #analyser_render {
@@ -7,24 +8,30 @@ body {
   border: 2px solid rgb(58, 58, 58);
   border-radius: 20px;
   display: block;
-  margin: auto;
+  margin: 0;
+  align-self: center;
+  align-items: center;
+  position: absolute;
 }
 
 #audio_box {
   margin: 20px auto;
   display: flex;
   justify-content: center;
+  position: absolute;
+  opacity: 0.6;
+  width: 100%;
 }
 
 #inputButtonPlayPause, #inputButtonSkip {
   font-size: 40px;
-  background: rgb(83, 58, 143);
+  background: rgb(219, 221, 121);
   border: 3px solid rgb(43, 92, 99);
   border-radius: 40px;
   transition: 0.2s;
 }
 
-#inputButtonPlayPause, #inputButtonSkip {
+#inputButtonPlayPause:hover, #inputButtonSkip:hover {
   font-size: 45px;
 }
 
@@ -40,3 +47,19 @@ body {
   font-size: 40px;
   margin: 0;
 }
+
+#audio_box input[type="range"]::-webkit-slider-thumb {
+  box-shadow: 0 0 0 0 rgba(141, 34, 190, 0.5);
+  border-radius: 50%;
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+#audio_box input[type="range"]::-webkit-slider-thumb:hover {
+  box-shadow: 0 0 0 5px rgba(141, 34, 190, 0.2);
+}
+
+#audio_box input[type="range"]:active::-webkit-slider-thumb:hover {
+  box-shadow: 0 0 0 10px rgba(141, 34, 190, 0.2);
+}
+

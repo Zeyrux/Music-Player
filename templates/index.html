@@ -10,7 +10,7 @@
     <div id="audio_box">
       <audio src="static/songs/song{{current_song_id}}.mp3" id="audio" autoplay="true"></audio>
       <p id="paragraphSongName"></p>
-      <input type="range" id="inputRangeVolume" min=0 max="100" value="5">
+      <input id="inputRangeVolume" type="range" min=0 max="100" value="5">
       <button id="inputButtonPlayPause" name="playPause">Play</button>
       <form id="formSkipVolume" action="/">
         <input id="inputTextVolume" type="text" name="volume" value="{{volume}}">
