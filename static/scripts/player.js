@@ -58,7 +58,6 @@ function frameLooper(){
 	for (let i = 0; i < bars; i+=1) {
 		let bar_x = i * 2;
 		let bar_height = -(fbc_array[i] * canvas.height / 275);
-		//  fillRect( x, y, width, height ) // Explanation of the parameters below
 		for (let j = 1; j > -2; j -= 2)
 		{
 			ctx.fillRect(canvas.width / 2 + bar_x * j, canvas.height, bar_width, bar_height);
@@ -81,5 +80,4 @@ function frameLooper(){
 	ctx.textBaseline = "middle";
 	let text = song;
 	ctx.strokeText(text, canvas.width / 2 - Math.round(ctx.measureText(text).width) / 2, canvas.height * 0.35);
-
 }
