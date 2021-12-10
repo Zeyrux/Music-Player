@@ -1,6 +1,7 @@
 var audio = document.getElementById("audio")
 var paragraphSongName = document.getElementById("paragraphSongName")
 var inputButtonPlayPause = document.getElementById("inputButtonPlayPause")
+var inputCheckboxLoop = document.getElementById("inputCheckboxLoop")
 var formSkipVolume = document.getElementById("formSkipVolume")
 var inputTextVolume = document.getElementById("inputTextVolume")
 var inputButtonSkip = document.getElementById("inputButtonSkip")

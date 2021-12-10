@@ -1,3 +1,12 @@
+function setCurrentSongTime(time, setProgressbar=false) {
+    audio.currentTime = time
+    audio.play()
+    paragraphTime.innerHTML = Math.round(time) + " / " + Math.round(audio.duration)
+    if (setProgressbar) {
+        inputRangeSongProgress.value = Math.round(time)
+    }
+}
+
 window.addEventListener("load", function() {
     let attributeMax = document.createAttribute("max")
     attributeMax.value = Math.round(audio.duration)
@@ -24,14 +33,17 @@ inputRangeVolume.addEventListener("input", function() {
 });
 
 inputRangeSongProgress.addEventListener("input", function() {
-    audio.currentTime = this.value
-    paragraphTime.innerHTML = this.value + " / " + Math.round(audio.duration)
+    setCurrentSongTime(this.value)
 });
 
 setInterval(function() {
     inputRangeSongProgress.value = Math.round(audio.currentTime)
     paragraphTime.innerHTML = Math.round(audio.currentTime) + " / " + Math.round(audio.duration)
     if (audio.currentTime >= audio.duration - 1) {
-        formSkipVolume.submit()
+        if (inputCheckboxLoop.checked) {
+            setCurrentSongTime(0, true)
+        } else {
+            formSkipVolume.submit()
+        }
     }
 }, 1000)
