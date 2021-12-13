@@ -22,8 +22,8 @@ function average(ar) {
 initMp3Player();
 
 function initMp3Player(){
-	inputButtonPlayPause.removeEventListener("load", initMp3Player)
-	inputButtonPlayPause.removeEventListener("click", initMp3Player)
+	buttonPlayPause.removeEventListener("load", initMp3Player)
+	buttonPlayPause.removeEventListener("click", initMp3Player)
 	let context = new AudioContext()
 	// AudioContext object instance
 	analyser = context.createAnalyser()
@@ -33,8 +33,7 @@ function initMp3Player(){
 	ctx = canvas.getContext('2d')
 	// Re-route audio playback into the processing graph of the AudioContext
 	gradientBars = ctx.createLinearGradient(canvas.width, canvas.height, canvas.width, -canvas.height)
-	gradientBars.addColorStop(0, "green")
-	gradientBars.addColorStop(0.2, "blue")
+	gradientBars.addColorStop(0.0, "blue")
 	gradientBars.addColorStop(0.4, "red")
 	gradientCircleAll = ctx.createLinearGradient(canvas.width, 0, canvas.width, canvas.height)
 	gradientCircleAll.addColorStop(0, "rgba(0, 0, 0, 0.2)")
@@ -74,7 +73,7 @@ function frameLooper(){
 
 	ctx.fillStyle = gradientCircleBass
 	ctx.beginPath()
-	radius = Math.round(average(fbc_array.slice(0, 6)) * canvas.height / 275)
+	radius = Math.round(average(fbc_array.slice(0, 5)) * canvas.height / 275)
 	ctx.arc(canvas.width / 2, 0, radius, 2 * Math.PI, false)
 	ctx.fill()
 

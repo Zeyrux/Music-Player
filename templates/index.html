@@ -9,14 +9,12 @@
     <canvas id="analyser_render"></canvas>
     <div id="audio_box">
       <audio src="static/songs/song{{current_song_id}}.mp3" id="audio" autoplay="true"></audio>
-      <p id="paragraphSongName"></p>
       <input id="inputRangeVolume" type="range" min=0 max="100" value="5">
-      <input id="inputCheckboxLoop" type="checkbox" name="loop"></button>
-      <label for="inputCheckboxLoop">Loop</label>
-      <button id="inputButtonPlayPause" name="playPause">Play</button>
+      <button id="buttonLoop">Loop</button>
+      <button id="buttonPlayPause">Play</button>
       <form id="formSkipVolume" action="/">
-        <input id="inputTextVolume" type="text" name="volume" value="{{volume}}">
         <input id="inputButtonSkip" type="submit" value="Skip">
+        <input id="inputTextVolume" type="text" name="volume" value="{{volume}}">
       </form>
       <p id="paragraphTime">0:00 / 1:00</p>
       <input type="range" id="inputRangeSongProgress" min="0">

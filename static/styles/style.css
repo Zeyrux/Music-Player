@@ -8,10 +8,9 @@ body {
   background: linear-gradient(rgb(113, 113, 226), rgb(150, 136, 136));
   border: 2px solid rgb(58, 58, 58);
   border-radius: 20px;
-  display: block;
-  margin: 0;
-  align-self: center;
-  align-items: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 0);
   position: absolute;
 }
 
@@ -24,7 +23,11 @@ body {
   width: 100%;
 }
 
-#inputButtonPlayPause, #inputButtonSkip {
+#audio_box *{
+  margin: 0 7px;
+}
+
+button, #inputButtonSkip {
   font-size: 40px;
   background: rgb(219, 221, 121);
   border: 3px solid rgb(43, 92, 99);
@@ -33,22 +36,8 @@ body {
   cursor: pointer;
 }
 
-#inputButtonPlayPause:hover, #inputButtonSkip:hover {
+button:hover, #inputButtonSkip:hover {
   font-size: 45px;
-}
-
-#inputCheckboxLoop {
-  appearance: none;
-  height: 30px;
-  width: 30px;
-  background-color: rgb(182, 182, 182);
-  border-radius: 5px;
-  cursor: pointer;
-  align-self: center;
-}
-
-#inputCheckboxLoop:checked {
-  background-color: rgb(42, 252, 0);
 }
 
 #inputTextVolume {

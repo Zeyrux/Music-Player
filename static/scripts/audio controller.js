@@ -1,29 +1,38 @@
-function setCurrentSongTime(time, setProgressbar=false) {
+loop_aktiv = false
+
+function setCurrentSongTime(time, setParagraph=true, setProgressbar=true) {
     audio.currentTime = time
     audio.play()
-    paragraphTime.innerHTML = Math.round(time) + " / " + Math.round(audio.duration)
+    if (setParagraph) {
+        paragraphTime.innerHTML = Math.floor(time / 60) + ":" + Math.round(time % 60) + " / "
+        + time_minutes_max + ":" + time_seconds_max
+    }
     if (setProgressbar) {
         inputRangeSongProgress.value = Math.round(time)
     }
 }
 
-window.addEventListener("load", function() {
-    let attributeMax = document.createAttribute("max")
-    attributeMax.value = Math.round(audio.duration)
-    inputRangeSongProgress.setAttributeNode(attributeMax)
-});
-
 window.addEventListener("resize", function() {
     resize()
 })
 
-inputButtonPlayPause.addEventListener("click", function() {
+buttonLoop.addEventListener("click", function() {
+    if (loop_aktiv) {
+        loop_aktiv = false
+        buttonLoop.style.background = "rgb(211, 102, 102)"
+    } else {
+        loop_aktiv = true
+        buttonLoop.style.background = "rgb(42, 252, 0)"
+    }
+})
+
+buttonPlayPause.addEventListener("click", function() {
     if (audio.paused) {
         audio.play()
-        inputButtonPlayPause.innerHTML = "Pause"
+        buttonPlayPause.innerHTML = "Pause"
     } else {
         audio.pause()
-        inputButtonPlayPause.innerHTML = "Play"
+        buttonPlayPause.innerHTML = "Play"
     }
 });
 
@@ -33,15 +42,14 @@ inputRangeVolume.addEventListener("input", function() {
 });
 
 inputRangeSongProgress.addEventListener("input", function() {
-    setCurrentSongTime(this.value)
+    setCurrentSongTime(this.value, true, false)
 });
 
 setInterval(function() {
-    inputRangeSongProgress.value = Math.round(audio.currentTime)
-    paragraphTime.innerHTML = Math.round(audio.currentTime) + " / " + Math.round(audio.duration)
+    setCurrentSongTime(audio.currentTime)
     if (audio.currentTime >= audio.duration - 1) {
-        if (inputCheckboxLoop.checked) {
-            setCurrentSongTime(0, true)
+        if (loop_aktiv) {
+            setCurrentSongTime(0)
         } else {
             formSkipVolume.submit()
         }
