@@ -10,11 +10,17 @@
     <div id="audio_box">
       <audio src="static/songs/song{{current_song_id}}.mp3" id="audio" autoplay="true"></audio>
       <input id="inputRangeVolume" type="range" min=0 max="100" value="5">
+      <form action="">
+        <input class="inputTextVolume" type="text" name="volume" value="{{volume}}">
+        <input id="inputTextBack" type="text" name="back" value="true">
+        <input id="inputButtonBack" type="submit" name="back" value="Back">
+      </form>
       <button id="buttonLoop">Loop</button>
       <button id="buttonPlayPause">Play</button>
       <form id="formSkipVolume" action="/">
         <input id="inputButtonSkip" type="submit" value="Skip">
-        <input id="inputTextVolume" type="text" name="volume" value="{{volume}}">
+        <input class="inputTextVolume" type="text" name="volume" value="{{volume}}">
+        <input id="inputTextBack" type="text" name="back" value="false">
       </form>
       <p id="paragraphTime">0:00 / 1:00</p>
       <input type="range" id="inputRangeSongProgress" min="0">

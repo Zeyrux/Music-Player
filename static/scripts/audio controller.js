@@ -1,14 +1,15 @@
 loop_aktiv = false
 
-function setCurrentSongTime(time, setParagraph=true, setProgressbar=true) {
-    audio.currentTime = time
-    audio.play()
-    if (setParagraph) {
-        paragraphTime.innerHTML = Math.floor(time / 60) + ":" + Math.round(time % 60) + " / "
-        + time_minutes_max + ":" + time_seconds_max
+function setCurrentSongTime(time, setAudio=false) {
+    secondsCurrent = Math.round(time % 60)
+    if (secondsCurrent < 10) {
+        secondsCurrent = "0" + secondsCurrent
     }
-    if (setProgressbar) {
-        inputRangeSongProgress.value = Math.round(time)
+    paragraphTime.innerHTML = Math.floor(time / 60) + ":" + secondsCurrent + " / " + time_minutes_max + ":" + time_seconds_max
+    inputRangeSongProgress.value = Math.round(time)
+    if (setAudio) {
+        audio.currentTime = time
+        audio.play()
     }
 }
 
@@ -38,20 +39,22 @@ buttonPlayPause.addEventListener("click", function() {
 
 inputRangeVolume.addEventListener("input", function() {
     audio.volume = this.value / 100
-    inputTextVolume.setAttribute("value", this.value)
+    for (let i = 0; i < inputTextVolumes.length; i++) {
+        inputTextVolumes[i].setAttribute("value", this.value)
+    }
 });
 
 inputRangeSongProgress.addEventListener("input", function() {
-    setCurrentSongTime(this.value, true, false)
+    setCurrentSongTime(this.value, true)
 });
 
 setInterval(function() {
     setCurrentSongTime(audio.currentTime)
     if (audio.currentTime >= audio.duration - 1) {
         if (loop_aktiv) {
-            setCurrentSongTime(0)
+            setCurrentSongTime(0, true)
         } else {
             formSkipVolume.submit()
         }
     }
-}, 1000)
+}, 500)

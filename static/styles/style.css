@@ -23,24 +23,30 @@ body {
   width: 100%;
 }
 
-#audio_box *{
-  margin: 0 7px;
-}
-
-button, #inputButtonSkip {
+button, input[type="submit"] {
   font-size: 40px;
   background: rgb(219, 221, 121);
   border: 3px solid rgb(43, 92, 99);
   border-radius: 40px;
   transition: 0.2s;
+  margin: 0 7px;
   cursor: pointer;
 }
 
-button:hover, #inputButtonSkip:hover {
+button:hover, input[type="submit"]:hover {
   font-size: 45px;
 }
 
-#inputTextVolume {
+form {
+  margin: 0;
+}
+
+.inputTextVolume {
+  margin: 0;
+  border: 10px solid black;
+}
+
+input[type="text"] {
   visibility: hidden;
   margin: 0;
   padding: 0;
@@ -58,18 +64,21 @@ button:hover, #inputButtonSkip:hover {
   margin: auto 0;
 }
 
-#audio_box input[type="range"]::-webkit-slider-thumb {
+input[type="range"] {
+  margin: 0 7px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
   box-shadow: 0 0 0 0 rgba(141, 34, 190, 0.5);
   border-radius: 50%;
   transition: 0.3s ease-in-out;
   cursor: pointer;
 }
 
-#audio_box input[type="range"]::-webkit-slider-thumb:hover {
+input[type="range"]::-webkit-slider-thumb:hover {
   box-shadow: 0 0 0 5px rgba(141, 34, 190, 0.2);
 }
 
-#audio_box input[type="range"]:active::-webkit-slider-thumb:hover {
+input[type="range"]:active::-webkit-slider-thumb:hover {
   box-shadow: 0 0 0 10px rgba(141, 34, 190, 0.2);
 }
-

@@ -2,7 +2,7 @@ var audio = document.getElementById("audio")
 var buttonPlayPause = document.getElementById("buttonPlayPause")
 var buttonLoop = document.getElementById("buttonLoop")
 var formSkipVolume = document.getElementById("formSkipVolume")
-var inputTextVolume = document.getElementById("inputTextVolume")
+var inputTextVolumes = document.getElementsByClassName("inputTextVolume")
 var inputButtonSkip = document.getElementById("inputButtonSkip")
 var paragraphTime = document.getElementById("paragraphTime")
 var inputRangeSongProgress = document.getElementById("inputRangeSongProgress")
@@ -27,6 +27,9 @@ window.addEventListener("load", function() {
 
     time_minutes_max = Math.floor(audio.duration / 60)
     time_seconds_max = Math.round(audio.duration % 60)
+    if (time_seconds_max < 10) {
+        time_seconds_max = "0" + time_seconds_max
+    }
 });
 
 song = song.replaceAll("#SPACE#", " ")
