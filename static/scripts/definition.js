@@ -14,6 +14,16 @@ var time_seconds_max
 var bars
 var song = document.currentScript.getAttribute("song")
 
+let isSetMaxTime = false
+
+function setMaxTime() {
+    if (audio.duration > 0)
+        attributeMax = document.createAttribute("max")
+        attributeMax.value = Math.round(audio.duration)
+        inputRangeSongProgress.setAttributeNode(attributeMax)
+        isSetMaxTime = true
+}
+
 function resize() {
     canvas.width = screen.width - 20
     canvas.height = screen.height - 20
@@ -21,10 +31,6 @@ function resize() {
 }
 
 window.addEventListener("load", function() {
-    let attributeMax = document.createAttribute("max")
-    attributeMax.value = Math.round(audio.duration)
-    inputRangeSongProgress.setAttributeNode(attributeMax)
-
     time_minutes_max = Math.floor(audio.duration / 60)
     time_seconds_max = Math.round(audio.duration % 60)
     if (time_seconds_max < 10) {
@@ -41,6 +47,6 @@ inputRangeVolume.value = volume
 
 buttonLoop.style.background = "rgb(211, 102, 102)"
 
-paragraphTime.innerHTML = "0 / " + Math.round(audio.duration)
+paragraphTime.innerHTML = "0:00 / load..."
 
 resize();

@@ -1,7 +1,10 @@
-loop_aktiv = false
+let loop_aktiv = false
 
 function setCurrentSongTime(time, setAudio=false) {
     secondsCurrent = Math.round(time % 60)
+    if (!isSetMaxTime) {
+        setMaxTime()
+    }
     if (secondsCurrent < 10) {
         secondsCurrent = "0" + secondsCurrent
     }
