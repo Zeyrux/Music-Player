@@ -48,16 +48,13 @@ def homepage():
         if current_song_id - 1 > 0:
             current_song_id -= 1
     else:
-        print(current_song_id)
         copy_song(playlist)
-        print(current_song_id)
-    
+
     return render_template("index.html", 
             song=playlist[current_song_id - 1][playlist[current_song_id - 1].rindex("\\") + 1: \
                  len(playlist[current_song_id - 1])].replace(".mp3", "").replace(" ", "#SPACE#"), 
             current_song_id=current_song_id - 1, 
             volume=volume)
-
 
 
 # song_copy_path: Final[str] = "C:\\Zeyrux\\Websites\\MusicPlayer\\static\\songs\\"

@@ -7,9 +7,6 @@ let bar_width = 1
 let analyser
 let ctxBars
 let ctxCircle
-let gradientBars
-let gradientCircleAll
-let gradientCircleBass
 
 function average(ar) {
 	let sum = 0;
@@ -32,15 +29,6 @@ function initMp3Player(){
 	analyser.connect(context.destination)
 	ctx = canvas.getContext('2d')
 	// Re-route audio playback into the processing graph of the AudioContext
-	gradientBars = ctx.createLinearGradient(canvas.width, canvas.height, canvas.width, -canvas.height)
-	gradientBars.addColorStop(0.0, "blue")
-	gradientBars.addColorStop(0.4, "red")
-	gradientCircleAll = ctx.createLinearGradient(canvas.width, 0, canvas.width, canvas.height)
-	gradientCircleAll.addColorStop(0, "rgba(0, 0, 0, 0.2)")
-	gradientCircleAll.addColorStop(0.5, "rgba(255, 255, 255, 0.2)")
-	gradientCircleBass = ctx.createLinearGradient(canvas.width, 0, canvas.width, canvas.height)
-	gradientCircleBass.addColorStop(0, "rgba(0, 0, 255, 0.2)")
-	gradientCircleBass.addColorStop(0.5, "rgba(0, 255, 0, 0.2")
 	frameLooper()
 }
 
@@ -77,9 +65,7 @@ function frameLooper(){
 	ctx.arc(canvas.width / 2, 0, radius, 2 * Math.PI, false)
 	ctx.fill()
 
-	radius = radius / 4
-	ctx.font = radius + "px serif"
+	ctx.font = radius / 4+ "px serif"
 	ctx.textBaseline = "middle"
-	let text = song
-	ctx.strokeText(text, canvas.width / 2 - Math.round(ctx.measureText(text).width) / 2, canvas.height * 0.35)
+	ctx.strokeText(song, canvas.width / 2 - Math.round(ctx.measureText(song).width) / 2, canvas.height * 0.35)
 }
